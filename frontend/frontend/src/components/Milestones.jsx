@@ -51,12 +51,12 @@ function Milestone() {
           <div className="flex justify-between">
           <div className=" ">
               <p className="">
-                  <FaCheck  className="inline text-white bg-[#2DCE89] rounded-full  text-lg p-1 mr-2"/>
+                  <FaCheck  className="inline text-white bg-gray-400 rounded-full  text-lg p-1 mr-2"/>
                 
                 Upcoming
               </p>
             </div>
-            <p className="text-[10px] border border-[#2DCE89] py-1 px-3 rounded-lg">
+            <p className="text-[10px] border border-[#2DCE89]\ py-1 px-3 rounded-lg">
               21-11-24
             </p>
           </div>
