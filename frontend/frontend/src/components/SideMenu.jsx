@@ -3,7 +3,7 @@ import profileImage from "../assets/Bitmap.png";
 
 function SideMenu() {
   return (
-    <div className="text-white min-h-screen flex flex-col justify-between p-[28px]">
+    <div className="text-white min-h-screen flex flex-col gap-52 p-[20px]">
       <div>
         <div>
           <span className="bg-[#DC3434] lg:text-[13px] font-semibold lg:px-2 lg:py-0.5 rounded-full absolute left-20 top-5">
@@ -17,7 +17,7 @@ function SideMenu() {
         </div>
 
         <div>
-          <ul className="lg:text-base flex flex-col lg:gap-[40px]">
+          <ul className="lg:text-base flex flex-col lg:gap-[35px]">
             <li className="font-semibold">Dashboard</li>
             <li>Payment History</li>
             <li>My Projects</li>
