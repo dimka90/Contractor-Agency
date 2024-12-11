@@ -2,18 +2,18 @@ import image3 from "../assets/image3.png";
 
 function WelcomeCard() {
   return (
-    <div>
-      <div className="bg-gradient-to-r  from-[#00644C] to-[#00B24E] text-white flex pt-2 px-3 rounded-lg mb-1">
-        <div className="flex flex-col gap-1 mt-7">
-          <p className="text-[15px] opacity-75">September 4, 2024</p>
+    <div className="w-full">
+      <div className="bg-gradient-to-r  from-[#00644C] to-[#00B24E] text-white flex px-3 rounded-lg mb-1">
+        <div className="flex flex-col mt-5">
+          <p className="text-sm opacity-75">September 4, 2024</p>
           <p className="text-[20px] font-semibold">Welcome back, John!</p>
-          <p className="text-[15px] opacity-75">Stay updated in your Contractor portal</p>
+          <p className="text-sm opacity-75">Stay updated in your Contractor portal</p>
         </div>
         <div>
           <img src={image3} alt="" />
         </div>
       </div>
-      <div className="bg-gradient-to-r  from-[#00644C] to-[#00B24E] text-white flex gap-10 py-2 px-3 rounded-lg">
+      <div className="bg-gradient-to-r  from-[#00644C] to-[#00B24E] text-white flex justify-between  py-2 px-3 rounded-lg">
         <div className="flex flex-col gap-1 mt-5 mb-2">
           <p className="text-[15px] opacity-75">0xdafea492d9c6733ae3d56b7ed1a...</p>
           <p className="text-[15px] font-semibold">Available Balance</p>
