@@ -8,8 +8,8 @@ function ProjectName() {
       <div className="bg-[#F4F4F4] p-3 rounded-lg">
         <div className="flex justify-between">
           <div className="flex gap-2">
-            <span className="text-white bg-blue-500 rounded-full p-1"><FaCheck /></span>
-            <p className="text-[14px] text-black">In Progress</p>
+            {/* <span className="text-white bg-blue-500 rounded-full p-1"></span> */}
+            <p className="text-[14px] text-black"><FaCheck  className="text-white bg-blue-500 rounded-full p-1 text-lg inline mr-2" />In Progress</p>
           </div>
           <div className="flex gap-2">
             <p className="text-[10px] self-center">Milstone close date</p>
@@ -21,7 +21,7 @@ function ProjectName() {
           long description upto 3 lines Sorem ipsum dolor sit amet, consectetur
           adipiscing elit.
         </p>
-        <button className="bg-gradient-to-r from-[#00CA9A99] to-[#00644C99] rounded-3xl py-2.5 px-7 text-[14px] text-white">
+        <button className="bg-gradient-to-r from-[#00CA9A99] to-[#00644C99] rounded-3xl py-2 px-5 text-[14px] text-white">
           Complete Milestone
         </button>
       </div>
