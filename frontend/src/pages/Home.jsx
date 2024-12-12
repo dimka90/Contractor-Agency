@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className="bg-[#F5F7FA]">
     <Navbar />
-      <div className=" flex xl:px-32 lg:px-20 lg:py-32 lg:flex-row flex-col">
+      <div className=" flex xl:px-32 lg:px-20 lg:py-16 lg:flex-row flex-col xl:h-screen lg:h-screen">
         <div className="self-center">
           <h1 className="text-[40px] font-medium ">
             Streamline Contract Management from Start to Finish
@@ -19,7 +19,7 @@ function Home() {
             Connect Wallet
           </button>
         </div>
-        <div>
+        <div className="self-center">
           <img src={image1} alt="" />
         </div>
       </div>
