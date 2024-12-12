@@ -24,8 +24,8 @@ function Home() {
           <img src={image1} alt="" />
         </div>
       </div>
-      <div className="lg:px-32 bg-white pb-20">
-        <div className="grid grid-cols-2">
+      <div className="lg:px-32 bg-white pb-20 px-5">
+        <div className="grid lg:grid-cols-2 grid-cols-1">
           <div>
             <img src={image2} alt="" />
           </div>
@@ -44,7 +44,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="grid lg:grid-cols-2 gap-10 lg:px-32 py-10">
+      <div className="grid lg:grid-cols-2  px-10 grid-cols-1 gap-10 lg:px-32 py-10">
         <div>
           <p className="text-[#4D4D4D] font-semibold text-[26px]">
             Transforming{" "}
@@ -68,7 +68,7 @@ function Home() {
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-2 bg-white lg:px-32">
+      <div className="grid lg:grid-cols-2 bg-white lg:px-32 px-10 grid-cols-1 mb-10">
         <div>
           <img src={image2} alt="" />
         </div>
