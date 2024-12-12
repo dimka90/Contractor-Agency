@@ -9,13 +9,14 @@ import Payment from "./pages/Payment";
 import AgencyProjects from "./pages/AgencyProjects";
 import AgencyPayment from "./pages/AgencyPayment";
 import AgencyDashboard from "./pages/AgencyDashboard";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <div className="bg-gradient-to-b from-[#00B24E] to-[#00644C] ">
       <Router>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Home/>}>
             {/* <Route path="/login" element={<Login />} /> */}
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/projects" element={<Projects />} />
