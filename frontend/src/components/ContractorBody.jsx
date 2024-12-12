@@ -5,8 +5,8 @@ import RecentProjects from "./RecentProjects"
 import WelcomeCard from "./WelcomCard"
 
 function ContractorBody(){
-    return <div className="bg-white m-[15px]  rounded-3xl flex gap-4">
-        <div className="w-[80%] p-[15px]">
+    return <div className="bg-white rounded-3xl flex gap-4 ">
+        <div className="w-[75%] p-[15px]">
             <WelcomeCard />
             <ProjectName />
             <RecentProjects />

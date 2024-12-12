@@ -10,10 +10,10 @@ import { Link } from "react-router-dom";
 
 function SideMenu() {
   return (
-    <div className="text-white min-h-screen flex flex-col justify-between p-[20px]">
+    <div className="text-white h-screen flex flex-col justify-between p-[20px]">
       <div>
         <div>
-          <span className="bg-[#DC3434] lg:text-[13px] font-semibold lg:px-2 lg:py-0.5 rounded-full absolute left-20 top-5">
+          <span className="bg-[#DC3434] lg:text-[13px] font-semibold lg:px-2 lg:py-0.5 rounded-full absolute left-20 ">
             4
           </span>
           <img src={profileImage} alt="" className="rounded-lg" />
@@ -26,9 +26,9 @@ function SideMenu() {
         <div>
           <ul className="lg:text-base flex flex-col lg:gap-[35px]">
             <li className="font-semibold"><MdSpaceDashboard  className="inline text-white text-xl mr-3"/><Link to="/dashboard">Dashboard</Link></li>
-            <li className=""><MdSpaceDashboard  className="inline text-white text-xl mr-3"/><Link to="/assign-contract">Assign Contract</Link></li>
-            <li><MdPayments  className="inline text-xl text-white mr-3"/>Payment History</li>
-            <li><GrProjects className="inline text-xl text-white mr-3"/>My Projects</li>
+            {/* <li className=""><MdSpaceDashboard  className="inline text-white text-xl mr-3"/><Link to="/assign-contract">Assign Contract</Link></li> */}
+            <li><MdPayments  className="inline text-xl text-white mr-3"/><Link to="/payment"> Payment History</Link></li>
+            <li><GrProjects className="inline text-xl text-white mr-3"/> <Link to="/projects">My Projects</Link></li>
             <li><BiSolidMessageSquareDetail className="inline text-xl text-white mr-3"/>Notifications</li>
           </ul>
         </div>
