@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import SideMenu from "./components/SideMenu";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import AgencySideMenu from "./components/AgencySideMenu";
 
 function Layout() {
   return (
@@ -14,7 +15,7 @@ function Layout() {
 
     
       <aside className="row-span-2 col-span-1  text-white">
-        <SideMenu />
+        <AgencySideMenu />
       </aside>
 
      
