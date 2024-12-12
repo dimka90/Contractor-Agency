@@ -11,8 +11,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="  sticky top-0 z-50 w-full md:w-full">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+    <nav className="  top-0 z-50 w-full md:w-full">
+      <div className="container mx-auto px-4 py-5 flex justify-between items-center">
         <div className="flex items-center">
           <img src={logo} alt="Logo" className="" />
           {/* <h1 className="text-xl font-bold">Logo</h1> */}
@@ -27,11 +27,11 @@ const Navbar = () => {
           <li className="hover:text-green-500 cursor-pointer">FAQ</li>
         </ul>
 
-        <div className="flex gap-5">
-          <Link className="hidden md:block bg-white text-green-500 border border-green-500 px-4 py-1 rounded-lg hover:bg-green-600">
+        <div className="flex gap-5 text-[14px]">
+          <Link className="hidden md:block bg-[#F5F7FA] text-green-500 border border-green-500 px-4 py-1 rounded hover:bg-green-600">
             Login
           </Link>
-          <Link className="hidden md:block bg-green-500 text-white px-4 py-1 rounded-lg hover:bg-green-600">
+          <Link className="hidden md:block bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600">
             Sign Up
           </Link>
         </div>
@@ -45,7 +45,7 @@ const Navbar = () => {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-green-600 shadow-lg">
+        <div className="md:hidden bg-white shadow-lg">
           <ul className="flex flex-col items-center space-y-4 py-4 text-lg font-medium">
             <li className="hover:text-green-500 cursor-pointer">Home</li>
             <li className="hover:text-green-500 cursor-pointer">About</li>

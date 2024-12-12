@@ -1,11 +1,12 @@
 import image1 from "../assets/image5.png";
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 function Home() {
   return (
-    <div className="bg-white">
+    <div className="bg-[#F5F7FA]">
     <Navbar />
-      <div className=" flex xl:px-32 lg:px-20 pt-16">
+      <div className=" flex xl:px-32 lg:px-20 lg:py-32 lg:flex-row flex-col">
         <div className="self-center">
           <h1 className="text-[40px] font-medium ">
             Streamline Contract Management from Start to Finish
@@ -22,6 +23,7 @@ function Home() {
           <img src={image1} alt="" />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
