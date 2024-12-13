@@ -13,7 +13,7 @@ function ContractorBody(){
         </div>
         <div className=" bg-[#F4F4F4] p-[15px] rounded-r-3xl flex flex-col gap-6">
             <Milestone />
-            <Meeting />
+            {/* <Meeting /> */}
         </div>
     </div>
 }
