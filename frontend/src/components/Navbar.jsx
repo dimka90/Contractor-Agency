@@ -28,12 +28,11 @@ const Navbar = () => {
         </ul>
 
 {/*      
-        <button className="hidden md:block bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
-        </button> */}
+        // <button className="hidden md:block bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+        // </button> */}
           <ConnectButton />
-       
+          <button className='py-3 px-1 border w-32  bg-blue-500 text-white rounded-2xl '>SignUp</button>
 
-       
         <div
           className="md:hidden text-2xl cursor-pointer"
           onClick={toggleMobileMenu}

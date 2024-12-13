@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useWriteContract,   useWaitForTransactionReceipt,
 } from 'wagmi'
 import { WagmiAbi} from '../wagmiAbi' 
-import { Contract, ethers } from 'ethers';
+// import { Contract, ethers } from 'ethers';
 
 // import WriteContract from '../components/writeContract';
 // import {ReadContract} from '../components/read';
