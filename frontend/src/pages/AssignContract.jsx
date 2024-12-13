@@ -199,7 +199,7 @@ useWaitForTransactionReceipt({
               <button
                 type="button"
                 onClick={handleModalToggle}
-                className="w-full bg-green-500 text-white py-2 rounded-3xl hover:bg-green-600"
+                className="w-full bg-slate-900 text-white py-2 rounded-3xl hover:bg-slate-950"
               >
                 Add Milestones
               </button>
@@ -207,7 +207,7 @@ useWaitForTransactionReceipt({
 
             <button
               type="submit"
-              className="w-full bg-green-500 text-white py-2 rounded-3xl hover:bg-green-600 flex items-center justify-center"
+              className="w-full bg-slate-900 text-white py-2 rounded-3xl hover:bg-slate-950 flex items-center justify-center"
               disabled={loading}
             >
               {loading ? (
