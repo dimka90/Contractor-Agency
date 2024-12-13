@@ -21,7 +21,7 @@ function ProjectName() {
           long description upto 3 lines Sorem ipsum dolor sit amet, consectetur
           adipiscing elit.
         </p>
-        <button className="bg-gradient-to-r from-[#00CA9A99] to-[#00644C99] rounded-3xl py-2 px-5 text-[14px] text-white">
+        <button className="bg-gradient-to-r  from-slate-600 to-slate-900 rounded-3xl py-2 px-5 text-[14px] text-white">
           Complete Milestone
         </button>
       </div>

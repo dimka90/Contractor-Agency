@@ -8,27 +8,21 @@ import { IoIosLogOut } from "react-icons/io";
 import { Link } from "react-router-dom";
 // import 
 
-function SideMenu() {
+function AgencySideMenu() {
   return (
     <div className="text-white h-screen flex flex-col justify-between p-[20px]">
       <div>
         <div>
-          <span className="bg-[#DC3434] lg:text-[13px] font-semibold lg:px-2 lg:py-0.5 rounded-full absolute left-20 ">
-            4
-          </span>
-          <img src={profileImage} alt="" className="rounded-lg" />
-        </div>
-        <div>
-          <h2 className="lg:text-[30px] font-semibold font-poppins">Samantha</h2>
-          <p className="lg:text-[17px] opacity-60 mb-7">samantha@email.com</p>
+          <h2 className="lg:text-[30px] font-semibold font-poppins">Plateau State</h2>
+          <p className="lg:text-[17px] opacity-60 mb-7">Ministry of...</p>
         </div>
 
         <div>
           <ul className="lg:text-base flex flex-col lg:gap-[35px]">
-            <li className="font-semibold"><MdSpaceDashboard  className="inline text-white text-xl mr-3"/><Link to="/dashboard">Dashboard</Link></li>
-            {/* <li className=""><MdSpaceDashboard  className="inline text-white text-xl mr-3"/><Link to="/assign-contract">Assign Contract</Link></li> */}
+            <li className="font-semibold"><MdSpaceDashboard  className="inline text-white text-xl mr-3"/><Link to="/agency-dashboard">Dashboard</Link></li>
+            <li className=""><MdSpaceDashboard  className="inline text-white text-xl mr-3"/><Link to="/assignContract">Assign Contract</Link></li>
             <li><MdPayments  className="inline text-xl text-white mr-3"/><Link to="/payment"> Payment History</Link></li>
-            <li><GrProjects className="inline text-xl text-white mr-3"/> <Link to="/projects">My Projects</Link></li>
+            <li><GrProjects className="inline text-xl text-white mr-3"/> <Link to="/agency-projects">Contractors</Link></li>
             <li><BiSolidMessageSquareDetail className="inline text-xl text-white mr-3"/>Notifications</li>
           </ul>
         </div>
@@ -41,4 +35,4 @@ function SideMenu() {
   );
 }
 
-export default SideMenu;
+export default AgencySideMenu;
