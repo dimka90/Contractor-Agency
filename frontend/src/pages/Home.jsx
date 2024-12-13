@@ -7,16 +7,16 @@ function Home() {
   return (
     <div className="bg-[#F5F7FA]">
       <Navbar />
-      <div className=" flex xl:px-32 lg:px-20 px-5 lg:py-32 lg:flex-row flex-col xl:h-screen lg:h-screen">
+      <div className=" flex xl:px-32 lg:px-20 px-5 lg:py-32 py-10 lg:flex-row flex-col xl:h-screen lg:h-screen">
         <div className="self-center">
-          <h1 className="text-[40px] font-medium ">
+          <h1 className="lg:text-[40px] font-medium text-[30px]">
             Streamline Contract Management from Start to Finish
           </h1>
-          <p className="text-[18px] text-[#505F98] w-[409px] mb-7">
+          <p className="lg:text-[18px] text-[#505F98] w-[409px] text-sm mb-7">
             An all-in-one platform for government parastatals and contractors to
             monitor, manage, and complete projects seamlessly
           </p>
-          <button className="bg-[#00644C] text-white text-[15px] py-2 px-5 rounded-sm">
+          <button className="bg-slate-900 text-white lg:text-[15px] text-xs py-2 px-5 rounded-sm">
             Connect Wallet
           </button>
         </div>
@@ -48,7 +48,7 @@ function Home() {
         <div>
           <p className="text-[#4D4D4D] font-semibold text-[26px]">
             Transforming{" "}
-            <span className="text-[#4CAF4F]">Project Management</span> for the
+            <span className="text-slate-800">Project Management</span> for the
             Better
           </p>
           <p className="text-sm">

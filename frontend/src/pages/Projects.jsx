@@ -38,7 +38,7 @@ function Projects() {
       </div>
 
       <div className="grid lg:grid-cols-3 gap-3 mt-6">
-        <div className="bg-[#F4F4F4] border border-[#00CA9A99] p-3 rounded-xl">
+        <div className="bg-[#F4F4F4] border border-slate-900 p-3 rounded-xl">
           <p className="text-2xl text-[#101828] font-semibold">Project Name</p>
           <p className="mt-4 text-[#475467]">
             Project description.Project description.Project description.Project

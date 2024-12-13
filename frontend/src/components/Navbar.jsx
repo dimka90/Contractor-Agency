@@ -19,19 +19,19 @@ const Navbar = () => {
         </div>
 
         <ul className="hidden md:flex space-x-8 text-base text-[#18191F]">
-          <li className="hover:text-green-500 cursor-pointer">Home</li>
-          <li className="hover:text-green-500 cursor-pointer">Services</li>
-          <li className="hover:text-green-500 cursor-pointer">Feature</li>
-          <li className="hover:text-green-500 cursor-pointer">Product</li>
-          <li className="hover:text-green-500 cursor-pointer">Testimonial</li>
-          <li className="hover:text-green-500 cursor-pointer">FAQ</li>
+          <li className="hover:text-slate-950 cursor-pointer">Home</li>
+          <li className="hover:text-slate-950 cursor-pointer">Services</li>
+          <li className="hover:text-slate-950 cursor-pointer">Feature</li>
+          <li className="hover:text-slate-950 cursor-pointer">Product</li>
+          <li className="hover:text-slate-950 cursor-pointer">Testimonial</li>
+          <li className="hover:text-slate-950 cursor-pointer">FAQ</li>
         </ul>
 
         <div className="flex gap-5 text-[14px]">
-          <Link className="hidden md:block bg-[#F5F7FA] text-green-500 border border-green-500 px-4 py-1 rounded hover:bg-green-600">
+          <Link className="hidden md:block bg-[#F5F7FA] text-slate-900 hover:text-white border border-slate-900 px-4 py-1 rounded hover:bg-slate-950">
             Login
           </Link>
-          <Link className="hidden md:block bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600">
+          <Link className="hidden md:block bg-slate-900 text-white px-4 py-1 rounded hover:bg-slate-900">
             Sign Up
           </Link>
         </div>
@@ -51,12 +51,12 @@ const Navbar = () => {
             <li className="hover:text-green-500 cursor-pointer">About</li>
             <li className="hover:text-green-500 cursor-pointer">Services</li>
             <li>
-              <Link className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+              <Link className="bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-slate-950">
                 Login
               </Link>
             </li>
             <li>
-              <Link className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+              <Link className="bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-slate-950">
                 Sign up
               </Link>
             </li>

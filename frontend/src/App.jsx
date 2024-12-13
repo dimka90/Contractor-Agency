@@ -13,10 +13,11 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="bg-gradient-to-b from-[#00B24E] to-[#00644C] ">
+    <div className="bg-slate-900 ">
       <Router>
         <Routes>
-          <Route path="/" element={<Home/>}>
+          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Layout />}>
             {/* <Route path="/login" element={<Login />} /> */}
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/projects" element={<Projects />} />
