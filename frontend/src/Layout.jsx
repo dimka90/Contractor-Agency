@@ -11,7 +11,7 @@ function Layout() {
     <div className="grid grid-rows-layout grid-cols-[250px_1fr] n">
     
       <header className="row-span-1 col-span-full text-white">
-        {/* <Navbar /> */}
+        <Navbar />
       </header>
 
     
@@ -22,7 +22,7 @@ function Layout() {
         <SideMenu />
       </aside>
 
-      <main className="row-span-2 col-span-1 p-4 overflow-y-auto">
+      <main className="row-span-2 col-span-1 p-4 overflow-y-auto mt-8">
         <Outlet />
       </main>
       <footer className="row-span-1 col-span-full border ">
