@@ -2,13 +2,24 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useWriteContract,   useWaitForTransactionReceipt,
+} from 'wagmi'
+import { WagmiAbi} from '../wagmiAbi' 
+import { Contract, ethers } from 'ethers';
+
+// import WriteContract from '../components/writeContract';
+// import {ReadContract} from '../components/read';
+
+// import ReadContract from '../components/read';
+// import { writeContract } from 'viem/actions';
 
 const AssignContract = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [milestones, setMilestones] = useState([
-    { name: '', startDate: '', endDate: '' },
-    { name: '', startDate: '', endDate: '' },
+    { description: '', startDate: '', endDate: '' },
+    { description: '', startDate: '', endDate: '' },
   ]);
 
   const {
@@ -17,6 +28,8 @@ const AssignContract = () => {
     reset,
     formState: { errors },
   } = useForm();
+
+  const {data: hash, writeContract, error  } = useWriteContract();
 
   const [milestoneErrors, setMilestoneErrors] = useState([]);
 
@@ -34,7 +47,7 @@ const AssignContract = () => {
   const validateMilestones = () => {
     const errors = milestones.map((milestone) => {
       const error = {};
-      if (!milestone.name) error.name = 'Milestone name is required';
+      if (!milestone.description) error.description = 'Milestone name is required';
       if (!milestone.startDate) error.startDate = 'Start date is required';
       if (!milestone.endDate) error.endDate = 'End date is required';
       return error;
@@ -43,29 +56,83 @@ const AssignContract = () => {
     return errors.every((error) => Object.keys(error).length === 0);
   };
 
-  const onSubmit = (data) => {
-    if (!validateMilestones()) {
-      toast.error('Please fix milestone errors before submitting');
-      return;
-    }
+  
+ 
+  
+    const  handleWrite = async (data) => {
+      try {
+        console.log("Handel Write", data);
+        console.log("Handle milsetones", (milestones));
+        const formattedMilestones = milestones.map((milestone) => ({
+          description: milestone.description,
+          paymentAmount: 0, // Convert to wei
+          dueDate: Math.floor(new Date(milestone.endDate).getTime() / 1000), // Convert to Unix timestamp
+          startDate: Math.floor(new Date(milestone.startDate).getTime() / 1000), // Convert to Unix timestamp
+        }));
+  
+        const args = [
+          data.description,
+          data.budget, // Budget in wei
+          0, // Initial balance
+          data.contractorAddress,
+          Math.floor(new Date(data.startDate).getTime() / 1000), // Unix timestamp
+          Math.floor(new Date(data.endDate).getTime() / 1000), // Unix timestamp
+          formattedMilestones,
+        ];
 
-    setLoading(true);
-
-    setTimeout(() => {
-      if (Math.random() > 0.3) {
-        setLoading(false);
-        toast.success('Contract assigned successfully!');
-        reset();
-        setMilestones([
-          { name: '', startDate: '', endDate: '' },
-          { name: '', startDate: '', endDate: '' },
-        ]);
-      } else {
-        setLoading(false);
-        toast.error('Failed to assign contract. Please try again.');
+        console.log("Inside Handle Args ", args)
+  
+        const tx=  writeContract({
+          address: '0xabDe84F6FfC9f44C978bD9dA76319316EeeA01BB',
+          abi: WagmiAbi,
+          functionName: 'createProject',
+        args: args });
+        console.log( "Result from creating", error);
+        // console.log(isConfirmed);
+  
+  
+        
+      } catch (error) {
+        console.error('Error submitting transaction:', error);
+      } finally {
+        console.log('error choke');
       }
-    }, 4000);
-  };
+    };
+
+
+const onSubmit = (data) => {
+  if (!validateMilestones()) {
+    toast.error('Please fix milestone errors before submitting');
+    return;
+  }
+
+  setLoading(true);
+
+  setTimeout(() => {
+    if (Math.random() > 0.3) {
+      setLoading(false);
+      toast.success('Contract assigned successfully!');
+      reset();
+      setMilestones([
+        { description: '', startDate: '', endDate: '' },
+        { description: '', startDate: '', endDate: '' },
+      ]);
+
+      // {console.log("i am data", data)}
+      // {console.log("jgjjg", milestones)}
+      const result = handleWrite(data)
+      console.log(result)
+    } else {
+      setLoading(false);
+      toast.error('Failed to assign contract. Please try again.');
+    }
+  }, 4000);
+};
+
+const { isLoading: isConfirming, isSuccess: isConfirmed } =
+useWaitForTransactionReceipt({
+  hash,
+})
 
   return (
     
@@ -105,7 +172,9 @@ const AssignContract = () => {
               />
               {errors.contractorAddress && <p className="text-red-500 text-sm">{errors.contractorAddress.message}</p>}
             </div>
-
+            {error && (
+        <div>Error: {error.shortMessage || error.message}</div>
+      )}
             <div className="mb-4">
               <label className="block text-sm font-medium mb-1">Start Date</label>
               <input
@@ -148,6 +217,11 @@ const AssignContract = () => {
               )}
             </button>
           </form>
+         {/* <ReadContract /> */}
+
+         {isConfirming && <div>Waiting for confirmation...</div>}
+      {isConfirmed && <div>Transaction confirmed.</div>}
+
         </div>
 
         {isModalOpen && (
@@ -160,7 +234,7 @@ const AssignContract = () => {
                   <input
                     type="text"
                     value={milestone.name}
-                    onChange={(e) => handleMilestoneChange(index, 'name', e.target.value)}
+                    onChange={(e) => handleMilestoneChange(index, 'description', e.target.value)}
                     placeholder={`Enter milestone ${index + 1}`}
                     className={`w-full p-2 border rounded ${milestoneErrors[index]?.name && 'border-red-500'}`}
                   />

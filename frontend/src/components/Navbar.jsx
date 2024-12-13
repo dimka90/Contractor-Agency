@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,7 +27,7 @@ const Navbar = () => {
 
      
         <button className="hidden md:block bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
-          Connect
+        <ConnectButton />
         </button>
 
        
@@ -47,8 +48,9 @@ const Navbar = () => {
             <li className="hover:text-green-500 cursor-pointer">Services</li>
             <li>
               <button className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
-                Connect
-              </button>
+                
+                <ConnectButton />
+                 </button>
             </li>
           </ul>
         </div>
