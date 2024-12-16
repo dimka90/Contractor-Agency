@@ -31,8 +31,10 @@ const Navbar = () => {
         <button className="hidden md:block bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
         </button> */}
           <ConnectButton />
-       
-
+          {/* <Web3Provider>
+          <w3m-button />
+        </Web3Provider> */}
+          
        
         <div
           className="md:hidden text-2xl cursor-pointer"

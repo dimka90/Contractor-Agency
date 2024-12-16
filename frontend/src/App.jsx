@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import Login from "./pages/Login";
 import Projects from "./pages/Projects";
+import MilestoneForm from "./components/milestone";
 import Payment from "./pages/Payment";
 import AgencyProjects from "./pages/AgencyProjects";
 import AgencyPayment from "./pages/AgencyPayment";
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/" element={<Layout />}>
+          <Route path="/milestoneform" element={<MilestoneForm />}/>
             {/* <Route path="/login" element={<Login />} /> */}
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/projects" element={<Projects />} />
