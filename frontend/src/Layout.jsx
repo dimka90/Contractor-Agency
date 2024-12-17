@@ -18,7 +18,7 @@ function Layout() {
       {/* <aside className="row-span-2 col-span-1  text-white">
         <AgencySideMenu />
       </aside> */}
-      <aside className="row-span-2 col-span-1  text-white">
+      <aside className="row-span-2 col-span-1  text-white mt-20">
         <SideMenu />
       </aside>
 

@@ -130,7 +130,7 @@ function AssignContract() {
   }
 
   return (
-    <div className="mt-4 ml-52">
+    <div className="mt-10 ml-60">
       <div className="bg-white rounded-xl shadow-lg w-[500px] h-auto mb-8 p-6">
         <h2 className="text-center text-xl font-bold mb-4">Assign Contract</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
