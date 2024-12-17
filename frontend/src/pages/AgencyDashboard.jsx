@@ -7,18 +7,19 @@ import Meeting from "../components/Meetings"
 import ProjectName from "../components/ProjectName"
 import Milestone from "../components/Milestones"
 import RecentProjects from "../components/RecentProjects"
+import AssignContract from "./AssignContract"
 
 function AgencyDashboard(){
     return <div className="bg-white rounded-3xl flex gap-4 ">
         <div className="w-[75%] p-[15px]">
             {/* <WelcomeCard /> */}
-            <ProjectName />
-            <ProjectName />
-            <RecentProjects />
+            {/* <ProjectName /> */}
+            {/* <ProjectName /> */}
+            <AssignContract/>
         </div>
         <div className=" bg-[#F4F4F4] p-[15px] rounded-r-3xl flex flex-col gap-6">
-            <Milestone />
-            <Meeting />
+            {/* <Milestone />
+            <Meeting /> */}
         </div>
     </div>
 }
