@@ -9,7 +9,7 @@ enum ProjectStatus { NotStarted, InProgress, Completed, Canceled }
 
 event CreateContractor(string,address,uint);
 event CreateProject(string projectDescription,uint projectId,address contractorName,address agencyAddress);
-
+event SubmitedMileStone(uint projectId, string milestoneDescription, uint milestoneId, address contractoraAddress);
 struct Contractor{
 
     string companyName;
@@ -36,6 +36,18 @@ struct Milestone{
     uint paymentAmount;
     uint dueDate;
     uint startDate;
+    string milestoneImageCid;
+}
+
+struct RejectedMileStone{
+    uint projectId;
+    uint milestoneId;
+    address contractor;
+}
+struct MileStoneSubMitted{
+    uint projectId;
+    uint milestoneId;
+    address contractor;
 }
 
 struct Project {
@@ -56,6 +68,9 @@ mapping(uint256 => Project) public projects;
 mapping(address => uint256[]) public contractorProjects;
 mapping(uint256 projectId=> Milestone[]) public projectMilestones;
 mapping(uint256 => Contractor) public contractor;
+mapping(address => RejectedMileStone[] ) public rejectedMilestones;
+mapping(address => MileStoneSubMitted[] ) public milestoneSubmitted;
+mapping(address => address ) public agencyContractor;
 Contractor[] public contractors;
 uint milestoneId;
 
@@ -88,12 +103,17 @@ description:_milestones[i].description,
 completed: false,
 paymentAmount:_milestones[i].paymentAmount,
 dueDate: _milestones[i].dueDate,
-startDate: _milestones[i].startDate
+startDate: _milestones[i].startDate,
+milestoneImageCid: ""
     }));
 }
 // Append to list of contractors project
 
 contractorProjects[_contractorAddress].push(projectId);
+
+// creating Agency-Contractor
+
+agencyContractor[msg.sender] = _contractorAddress;
 
 emit CreateProject(
 _description,
@@ -135,15 +155,77 @@ emit CreateContractor(_companyName, msg.sender, _registrationNumber);
 }
 
 
-function submitCompletedProject(
+function submitCompletedMileStone(
     uint _projectId,
-    string memory _projectDescription,
-    string memory  _projectImagecid  
-) external{
+    string memory _milestoneDescription,
+    string memory _mileStoneImagecid,
+    uint _milestoneId
+) external returns (bool) {
+    // Get project by ID
+    Project storage updateProject = projects[_projectId];
+    require(updateProject.contractorAddress != address(0), "Project does not exist");
 
+    // Get the milestones array for the project
+    Milestone[] storage updateMilestones = updateProject.mileStone;
 
+    // Find the milestone and update it
+    bool milestoneFound = false;
+    for (uint i; i < updateMilestones.length; i++) {
+        if (updateMilestones[i].milestoneId == _milestoneId) {
+            updateMilestones[i].description = _milestoneDescription;
+            updateMilestones[i].milestoneImageCid = _mileStoneImagecid;
+            milestoneFound = true;
+            break;
+        }
+    }
+    require(milestoneFound, "Milestone not found");
 
+    // Add the submitted milestone to the milestoneSubmitted mapping
+    MileStoneSubMitted[] storage milestones = milestoneSubmitted[updateProject.contractorAddress];
+    milestones.push(
+        MileStoneSubMitted({
+            projectId: _projectId,
+            milestoneId: _milestoneId,
+            contractor: updateProject.contractorAddress
+        })
+    );
+
+    // Emit the event
+    emit SubmitedMileStone(_projectId, _milestoneDescription, _milestoneId, msg.sender);
+
+    return true;
 }
+
+
+function ApproveMilestone(uint _projectId, uint _milestoneId) external returns (bool){
+    Project storage updateproject = projects[_projectId];
+    Milestone[]  storage updateMilestones = updateproject.mileStone;
+    uint milestonesLength = updateMilestones.length - 1;
+    if (_milestoneId == milestonesLength){
+updateproject.completed = true;
+    }
+    for(uint i; i < updateMilestones.length; i++)
+    {
+        if(updateMilestones[i].milestoneId == _milestoneId){
+    updateMilestones[i].completed = true;
+    }
+    }
+    return true;
+    }
+
+    function RejectMilestones(uint _milestoneId, uint _projectId, address contractorAddress) external returns(bool)
+    {
+        RejectedMileStone[] storage milstonesRejected = rejectedMilestones[contractorAddress];
+        milstonesRejected.push(
+            RejectedMileStone({
+                projectId: _projectId,
+                milestoneId: _milestoneId,
+                contractor: contractorAddress
+                }));
+
+                return true;
+
+    }
 // Getters functions
 
 function getAllContractors() external view returns(Contractor[] memory) 
@@ -205,6 +287,16 @@ return projects[_projectId];
 }
 
 
+// Get submitted Milestone for review
+ function getsubmittedMilestone(address _contractorAddress) external view returns(MileStoneSubMitted[] memory)
+ {
+return milestoneSubmitted[_contractorAddress];
+ }
+
+function getRejectedProject(address _contractorAddress) view external  returns(RejectedMileStone[] memory)
+{
+    return rejectedMilestones[_contractorAddress];
+}
 // Government agency 
 
 function createAgency () external{
