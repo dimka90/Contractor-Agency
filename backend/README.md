@@ -106,3 +106,16 @@ Contract verification status:
 Response: `OK`
 Details: `Pass - Verified`
 Contract successfully verified
+
+update 3
+ forge create --rpc-url https://rpc.sepolia-api.lisk.com --etherscan-api-key GTT7DH386XJ2JDK8RAU64UPYBT1D4GGEQW --verify --verifier blockscout --verifier-url https://sepolia-blockscout.lisk.com/api --private-key 3c52739c9a662defb57de6b8aa2d742a0e42f95ef4c7a1064428e39f7fc61909 src/Contractor.sol:Procurement
+[⠢] Compiling...
+No files changed, compilation skipped
+Deployer: 0x1864cdF30E6B98240e4b3eF88bfF5cD5d5BdEF40
+Deployed to: 0x559E854725884F633E680d62A159C94e79BEF657
+Transaction hash: 0x6b54ff017ad0bfe5a5b720002e75cdab4af5a8a7a4e692ccffd28d640e0c78c2
+Starting contract verification...
+Waiting for blockscout to detect contract deployment...
+Start verifying contract `0x559E854725884F633E680d62A159C94e79BEF657` deployed on 4202
+
+Contract [src/Contractor.sol:Procurement] "0x559E854725884F633E680d62A159C94e79BEF657" is already verified. Skipping verification.
