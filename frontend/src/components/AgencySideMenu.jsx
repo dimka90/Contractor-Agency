@@ -21,7 +21,7 @@ function AgencySideMenu() {
           <ul className="lg:text-base flex flex-col lg:gap-[35px]">
             <li className="font-semibold"><MdSpaceDashboard  className="inline text-white text-xl mr-3"/><Link to="/agency-dashboard">Dashboard</Link></li>
             <li className=""><MdSpaceDashboard  className="inline text-white text-xl mr-3"/><Link to="/assignContract">Assign Contract</Link></li>
-            <li><MdPayments  className="inline text-xl text-white mr-3"/><Link to="/payment"> Payment History</Link></li>
+            {/* <li><MdPayments  className="inline text-xl text-white mr-3"/><Link to="/assignContract"> Assign Contract</Link></li> */}
             <li><GrProjects className="inline text-xl text-white mr-3"/> <Link to="/agency-projects">Contractors</Link></li>
             <li><BiSolidMessageSquareDetail className="inline text-xl text-white mr-3"/>Notifications</li>
           </ul>
