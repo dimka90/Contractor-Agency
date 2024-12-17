@@ -1,13 +1,39 @@
+import React, { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 import image1 from "../assets/image5.png";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import image2 from "../assets/pana.png";
 
 function Home() {
+  const [allowNavigation, setAllowNavigation] = useState(false); 
+  const navigate = useNavigate();
+
+  const handleButtonClick = (path) => {
+    if (!allowNavigation) {
+      toast.error("Please connect your wallet to proceed!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setAllowNavigation(true); 
+    } else {
+      navigate(path); 
+    }
+  };
+
   return (
     <div className="bg-[#F5F7FA]">
+      <ToastContainer />
+
       <Navbar />
-      <div className=" flex xl:px-32 lg:px-20 px-5 lg:py-32 py-10 lg:flex-row flex-col xl:h-screen lg:h-screen">
+      <div className="flex xl:px-32 lg:px-20 px-5 lg:py-32 py-10 lg:flex-row flex-col xl:h-screen lg:h-screen">
         <div className="self-center">
           <h1 className="lg:text-[40px] font-medium text-[30px]">
             Streamline Contract Management from Start to Finish
@@ -16,14 +42,19 @@ function Home() {
             An all-in-one platform for government parastatals and contractors to
             monitor, manage, and complete projects seamlessly
           </p>
-          <div>
-
-          <button className="bg-slate-900 text-white lg:text-[15px] text-xs py-2 px-5 rounded-sm">
-           Get started Contractor
-          </button>
-          <button className="bg-slate-900 text-white lg:text-[15px] text-xs py-2 px-5 rounded-sm">
-           Get started Agency
-          </button>
+          <div className="flex gap-8 justify items-center">
+            <button
+              className="bg-green-600 hover:bg-yellow-500 text-white lg:text-[15px] text-md py-3 px-5 rounded-xl"
+              onClick={() => handleButtonClick("/dashboard")}
+            >
+              Start as Contractor
+            </button>
+            <button
+              className="bg-green-600 hover:bg-yellow-500 text-white lg:text-[15px] text-md py-3 px-5 rounded-xl"
+              onClick={() => handleButtonClick("/agency-dashboard")}
+            >
+              Start as Agency
+            </button>
           </div>
         </div>
         <div className="self-center">
@@ -50,30 +81,31 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="grid lg:grid-cols-2  px-10 grid-cols-1 gap-10 lg:px-32 py-10">
-        <div>
-          <p className="text-[#4D4D4D] font-semibold text-[26px]">
-            Transforming{" "}
-            <span className="text-slate-800">Project Management</span> for the
-            Better
-          </p>
-          <p className="text-sm">
-            Revolutionizing how contracts are tracked and completed, fostering
-            collaboration and transparency for government parastatals and
-            contractors.
-          </p>
-        </div>
-        <div>
-          <p className="text-[#4D4D4D] font-semibold text-[26px]">
-            Our Mission
-          </p>
-          <p className="text-sm">
-            To simplify contract management by streamlining processes, enhancing
-            accountability, and ensuring successful project delivery from start
-            to finish.
-          </p>
-        </div>
-      </div>
+      <div className="grid lg:grid-cols-2 px-10 grid-cols-1 gap-10 lg:px-32 py-10" id="our-mission">
+  <div>
+    <p className="text-[#4D4D4D] font-semibold text-[26px]">
+      Transforming{" "}
+      <span className="text-slate-800">Project Management</span> for the
+      Better
+    </p>
+    <p className="text-sm">
+      Revolutionizing how contracts are tracked and completed, fostering
+      collaboration and transparency for government parastatals and
+      contractors.
+    </p>
+  </div>
+  <div>
+    <p className="text-[#4D4D4D] font-semibold text-[26px]">
+      Our Mission
+    </p>
+    <p className="text-sm">
+      To simplify contract management by streamlining processes, enhancing
+      accountability, and ensuring successful project delivery from start
+      to finish.
+    </p>
+  </div>
+</div>
+
       <div className="grid lg:grid-cols-2 bg-white lg:px-32 px-10 grid-cols-1 mb-10">
         <div>
           <img src={image2} alt="" />
@@ -91,25 +123,6 @@ function Home() {
           </p>
         </div>
       </div>
-
-      {/* <div>
-        <h1>
-          Managing contracts doesn’t have to be complicated. Our platform is
-          designed to help government parastatals and contractors keep track of
-          every project from initiation to completion. Whether it's tracking
-          milestones, managing documents, or ensuring transparency, we provide
-          the tools you need to stay organized and efficient.
-        </h1>
-        <p>
-          Our platform is your go-to resource for insights into efficient
-          contract management and project success. Stay updated on the latest
-          trends, learn how others are optimizing their workflows, and explore
-          strategies for fostering transparency and collaboration.
-        </p>
-        <div>
-            <div></div>
-        </div>
-      </div> */}
       <Footer />
     </div>
   );
