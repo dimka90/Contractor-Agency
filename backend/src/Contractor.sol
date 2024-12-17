@@ -71,6 +71,9 @@ mapping(uint256 => Contractor) public contractor;
 mapping(address => RejectedMileStone[] ) public rejectedMilestones;
 mapping(address => MileStoneSubMitted[] ) public milestoneSubmitted;
 mapping(address => address ) public agencyContractor;
+mapping(uint256 projectId => uint[])public projectsubmited;
+
+
 Contractor[] public contractors;
 uint milestoneId;
 
@@ -107,6 +110,7 @@ startDate: _milestones[i].startDate,
 milestoneImageCid: ""
     }));
 }
+
 // Append to list of contractors project
 
 contractorProjects[_contractorAddress].push(projectId);
@@ -163,8 +167,9 @@ function submitCompletedMileStone(
 ) external returns (bool) {
     // Get project by ID
     Project storage updateProject = projects[_projectId];
-    require(updateProject.contractorAddress != address(0), "Project does not exist");
 
+    require(updateProject.contractorAddress != address(0), "Project does not exist");
+// projectsubmited[_projectId][_pr= _milestoneId;
     // Get the milestones array for the project
     Milestone[] storage updateMilestones = updateProject.mileStone;
 
@@ -179,6 +184,9 @@ function submitCompletedMileStone(
         }
     }
     require(milestoneFound, "Milestone not found");
+
+    // A single milstone submitted
+
 
     // Add the submitted milestone to the milestoneSubmitted mapping
     MileStoneSubMitted[] storage milestones = milestoneSubmitted[updateProject.contractorAddress];
@@ -288,10 +296,25 @@ return projects[_projectId];
 
 
 // Get submitted Milestone for review
- function getsubmittedMilestone(address _contractorAddress) external view returns(MileStoneSubMitted[] memory)
- {
-return milestoneSubmitted[_contractorAddress];
- }
+ function getsubmittedMilestone() external view returns(Milestone[] memory){
+    MileStoneSubMitted[] storage milestonesSub = milestoneSubmitted[agencyContractor[msg.sender]];
+    uint count = milestonesSub.length;
+
+    // Initialize an array to store submitted milestones
+    Milestone[] memory submittedMilestones = new Milestone[](count);
+
+    for (uint i = 0; i < count; i++) {
+        Project storage project = projects[milestonesSub[i].projectId];
+        for (uint j = 0; j < project.mileStone.length; j++) {
+            if (project.mileStone[j].milestoneId == milestonesSub[i].milestoneId) {
+                submittedMilestones[i] = project.mileStone[j];
+            }
+        }
+    }
+    return submittedMilestones;
+}
+ 
+ 
 
 function getRejectedProject(address _contractorAddress) view external  returns(RejectedMileStone[] memory)
 {
@@ -302,5 +325,5 @@ function getRejectedProject(address _contractorAddress) view external  returns(R
 function createAgency () external{
 
 }
+
 }
-//source->syn

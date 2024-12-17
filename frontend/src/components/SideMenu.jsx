@@ -19,6 +19,8 @@ function SideMenu() {
             {/* <li className=""><MdSpaceDashboard  className="inline text-white text-xl mr-3"/><Link to="/assign-contract">Assign Contract</Link></li> */}
             <li><MdPayments  className="inline text-xl text-white mr-3"/><Link to="/payment"> Payment History</Link></li>
             <li><GrProjects className="inline text-xl text-white mr-3"/> <Link to="/projects">My Projects</Link></li>
+            <li><GrProjects className="inline text-xl text-white mr-3"/> <Link to="/review">Projects Review</Link></li>
+
             {/* <li><GrProjects className="inline text-xl text-white mr-3"/> <Link to="/ReviewMilestone">Review</Link></li> */}
             <li><BiSolidMessageSquareDetail className="inline text-xl text-white mr-3"/>Notifications</li>
           </ul>

@@ -11,6 +11,8 @@ import AgencyProjects from "./pages/AgencyProjects";
 import AgencyPayment from "./pages/AgencyPayment";
 import AgencyDashboard from "./pages/AgencyDashboard";
 import Home from "./pages/Home";
+import ReviewMilestone from "./pages/projectReview";
+import AgencySideMenu from "./components/AgencySideMenu";
 
 function App() {
   return (
@@ -28,6 +30,10 @@ function App() {
             <Route path="/agency-payment" element={<AgencyPayment />} />
             <Route path="/agency-projects" element={<AgencyProjects />} />
             <Route path="/assigncontract" element={<AssignContract />} />
+            <Route path="/review" element={<ReviewMilestone />} />
+            <Route path="/agency-sidemenu" element={<AgencySideMenu />} />
+
+
           </Route>
         </Routes>
       </Router>

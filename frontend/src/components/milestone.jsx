@@ -111,16 +111,16 @@ function MilestoneForm() {
        ],
      });
 
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += 10;
-      setLoadingProgress(progress);
-      if (progress >= 100) {
-        clearInterval(interval);
-        alert("Milestone submitted successfully!");
-        resetForm();
-      }
-    }, 300);
+  //   let progress = 0;
+  //   const interval = setInterval(() => {
+  //     progress += 10;
+  //     setLoadingProgress(progress);
+  //     if (progress >= 100) {
+  //       clearInterval(interval);
+  //       alert("Milestone submitted successfully!");
+  //       resetForm();
+  //     }
+  //   }, 300);
   };
 
   const resetForm = () => {

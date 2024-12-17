@@ -16,9 +16,15 @@ function Home() {
             An all-in-one platform for government parastatals and contractors to
             monitor, manage, and complete projects seamlessly
           </p>
+          <div>
+
           <button className="bg-slate-900 text-white lg:text-[15px] text-xs py-2 px-5 rounded-sm">
-            Connect Wallet
+           Get started Contractor
           </button>
+          <button className="bg-slate-900 text-white lg:text-[15px] text-xs py-2 px-5 rounded-sm">
+           Get started Agency
+          </button>
+          </div>
         </div>
         <div className="self-center">
           <img src={image1} alt="" />

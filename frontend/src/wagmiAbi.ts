@@ -1,1 +1,1096 @@
-export const WagmiAbi = [{ "type": "function", "name": "ApproveMilestone", "inputs": [{ "name": "_projectId", "type": "uint256", "internalType": "uint256" }, { "name": "_milestoneId", "type": "uint256", "internalType": "uint256" }], "outputs": [{ "name": "", "type": "bool", "internalType": "bool" }], "stateMutability": "nonpayable" }, { "type": "function", "name": "RejectMilestones", "inputs": [{ "name": "_milestoneId", "type": "uint256", "internalType": "uint256" }, { "name": "_projectId", "type": "uint256", "internalType": "uint256" }, { "name": "contractorAddress", "type": "address", "internalType": "address" }], "outputs": [{ "name": "", "type": "bool", "internalType": "bool" }], "stateMutability": "nonpayable" }, { "type": "function", "name": "contractor", "inputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }], "outputs": [{ "name": "companyName", "type": "string", "internalType": "string" }, { "name": "registrationNumber", "type": "uint256", "internalType": "uint256" }, { "name": "taxIdenticationNumber", "type": "uint256", "internalType": "uint256" }, { "name": "physicalAddress", "type": "string", "internalType": "string" }, { "name": "owner", "type": "address", "internalType": "address" }, { "name": "addressImageCid", "type": "string", "internalType": "string" }, { "name": "companyUploadedCid", "type": "string", "internalType": "string" }], "stateMutability": "view" }, { "type": "function", "name": "contractorProjects", "inputs": [{ "name": "", "type": "address", "internalType": "address" }, { "name": "", "type": "uint256", "internalType": "uint256" }], "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }], "stateMutability": "view" }, { "type": "function", "name": "contractors", "inputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }], "outputs": [{ "name": "companyName", "type": "string", "internalType": "string" }, { "name": "registrationNumber", "type": "uint256", "internalType": "uint256" }, { "name": "taxIdenticationNumber", "type": "uint256", "internalType": "uint256" }, { "name": "physicalAddress", "type": "string", "internalType": "string" }, { "name": "owner", "type": "address", "internalType": "address" }, { "name": "addressImageCid", "type": "string", "internalType": "string" }, { "name": "companyUploadedCid", "type": "string", "internalType": "string" }], "stateMutability": "view" }, { "type": "function", "name": "createAgency", "inputs": [], "outputs": [], "stateMutability": "nonpayable" }, { "type": "function", "name": "createContractor", "inputs": [{ "name": "_companyName", "type": "string", "internalType": "string" }, { "name": "_registrationNumber", "type": "uint256", "internalType": "uint256" }, { "name": "_taxIdenticationNumber", "type": "uint256", "internalType": "uint256" }, { "name": "_physicalAddress", "type": "string", "internalType": "string" }, { "name": "_addressImageCid", "type": "string", "internalType": "string" }, { "name": "_companyUploadedCid", "type": "string", "internalType": "string" }], "outputs": [], "stateMutability": "nonpayable" }, { "type": "function", "name": "createProject", "inputs": [{ "name": "_description", "type": "string", "internalType": "string" }, { "name": "_budget", "type": "uint256", "internalType": "uint256" }, { "name": "_currentBalance", "type": "uint256", "internalType": "uint256" }, { "name": "_contractorAddress", "type": "address", "internalType": "address" }, { "name": "_startdate", "type": "uint256", "internalType": "uint256" }, { "name": "_endate", "type": "uint256", "internalType": "uint256" }, { "name": "_milestones", "type": "tuple[]", "internalType": "struct Procurement.Milestone[]", "components": [{ "name": "milestoneId", "type": "uint256", "internalType": "uint256" }, { "name": "description", "type": "string", "internalType": "string" }, { "name": "completed", "type": "bool", "internalType": "bool" }, { "name": "paymentAmount", "type": "uint256", "internalType": "uint256" }, { "name": "dueDate", "type": "uint256", "internalType": "uint256" }, { "name": "startDate", "type": "uint256", "internalType": "uint256" }, { "name": "milestoneImageCid", "type": "string", "internalType": "string" }] }], "outputs": [], "stateMutability": "nonpayable" }, { "type": "function", "name": "getAllContractors", "inputs": [], "outputs": [{ "name": "", "type": "tuple[]", "internalType": "struct Procurement.Contractor[]", "components": [{ "name": "companyName", "type": "string", "internalType": "string" }, { "name": "registrationNumber", "type": "uint256", "internalType": "uint256" }, { "name": "taxIdenticationNumber", "type": "uint256", "internalType": "uint256" }, { "name": "physicalAddress", "type": "string", "internalType": "string" }, { "name": "owner", "type": "address", "internalType": "address" }, { "name": "addressImageCid", "type": "string", "internalType": "string" }, { "name": "companyUploadedCid", "type": "string", "internalType": "string" }] }], "stateMutability": "view" }, { "type": "function", "name": "getContractor", "inputs": [{ "name": "_contractorAddress", "type": "address", "internalType": "address" }], "outputs": [{ "name": "", "type": "tuple", "internalType": "struct Procurement.Contractor", "components": [{ "name": "companyName", "type": "string", "internalType": "string" }, { "name": "registrationNumber", "type": "uint256", "internalType": "uint256" }, { "name": "taxIdenticationNumber", "type": "uint256", "internalType": "uint256" }, { "name": "physicalAddress", "type": "string", "internalType": "string" }, { "name": "owner", "type": "address", "internalType": "address" }, { "name": "addressImageCid", "type": "string", "internalType": "string" }, { "name": "companyUploadedCid", "type": "string", "internalType": "string" }] }], "stateMutability": "view" }, { "type": "function", "name": "getContractorsProject", "inputs": [{ "name": "_address", "type": "address", "internalType": "address" }], "outputs": [{ "name": "", "type": "tuple[]", "internalType": "struct Procurement.Project[]", "components": [{ "name": "projectId", "type": "uint256", "internalType": "uint256" }, { "name": "description", "type": "string", "internalType": "string" }, { "name": "budget", "type": "uint256", "internalType": "uint256" }, { "name": "currentBalance", "type": "uint256", "internalType": "uint256" }, { "name": "contractorAddress", "type": "address", "internalType": "address" }, { "name": "completed", "type": "bool", "internalType": "bool" }, { "name": "startDate", "type": "uint256", "internalType": "uint256" }, { "name": "endDate", "type": "uint256", "internalType": "uint256" }, { "name": "mileStone", "type": "tuple[]", "internalType": "struct Procurement.Milestone[]", "components": [{ "name": "milestoneId", "type": "uint256", "internalType": "uint256" }, { "name": "description", "type": "string", "internalType": "string" }, { "name": "completed", "type": "bool", "internalType": "bool" }, { "name": "paymentAmount", "type": "uint256", "internalType": "uint256" }, { "name": "dueDate", "type": "uint256", "internalType": "uint256" }, { "name": "startDate", "type": "uint256", "internalType": "uint256" }, { "name": "milestoneImageCid", "type": "string", "internalType": "string" }] }] }], "stateMutability": "view" }, { "type": "function", "name": "getProject", "inputs": [{ "name": "_projectId", "type": "uint256", "internalType": "uint256" }], "outputs": [{ "name": "", "type": "tuple", "internalType": "struct Procurement.Project", "components": [{ "name": "projectId", "type": "uint256", "internalType": "uint256" }, { "name": "description", "type": "string", "internalType": "string" }, { "name": "budget", "type": "uint256", "internalType": "uint256" }, { "name": "currentBalance", "type": "uint256", "internalType": "uint256" }, { "name": "contractorAddress", "type": "address", "internalType": "address" }, { "name": "completed", "type": "bool", "internalType": "bool" }, { "name": "startDate", "type": "uint256", "internalType": "uint256" }, { "name": "endDate", "type": "uint256", "internalType": "uint256" }, { "name": "mileStone", "type": "tuple[]", "internalType": "struct Procurement.Milestone[]", "components": [{ "name": "milestoneId", "type": "uint256", "internalType": "uint256" }, { "name": "description", "type": "string", "internalType": "string" }, { "name": "completed", "type": "bool", "internalType": "bool" }, { "name": "paymentAmount", "type": "uint256", "internalType": "uint256" }, { "name": "dueDate", "type": "uint256", "internalType": "uint256" }, { "name": "startDate", "type": "uint256", "internalType": "uint256" }, { "name": "milestoneImageCid", "type": "string", "internalType": "string" }] }] }], "stateMutability": "view" }, { "type": "function", "name": "getProjectMillstones", "inputs": [{ "name": "_projectId", "type": "uint256", "internalType": "uint256" }], "outputs": [{ "name": "", "type": "tuple[]", "internalType": "struct Procurement.Milestone[]", "components": [{ "name": "milestoneId", "type": "uint256", "internalType": "uint256" }, { "name": "description", "type": "string", "internalType": "string" }, { "name": "completed", "type": "bool", "internalType": "bool" }, { "name": "paymentAmount", "type": "uint256", "internalType": "uint256" }, { "name": "dueDate", "type": "uint256", "internalType": "uint256" }, { "name": "startDate", "type": "uint256", "internalType": "uint256" }, { "name": "milestoneImageCid", "type": "string", "internalType": "string" }] }], "stateMutability": "view" }, { "type": "function", "name": "getRejectedProject", "inputs": [{ "name": "_contractorAddress", "type": "address", "internalType": "address" }], "outputs": [{ "name": "", "type": "tuple[]", "internalType": "struct Procurement.RejectedMileStone[]", "components": [{ "name": "projectId", "type": "uint256", "internalType": "uint256" }, { "name": "milestoneId", "type": "uint256", "internalType": "uint256" }, { "name": "contractor", "type": "address", "internalType": "address" }] }], "stateMutability": "view" }, { "type": "function", "name": "getsubmittedMilestone", "inputs": [{ "name": "_contractorAddress", "type": "address", "internalType": "address" }], "outputs": [{ "name": "", "type": "tuple[]", "internalType": "struct Procurement.MileStoneSubMitted[]", "components": [{ "name": "projectId", "type": "uint256", "internalType": "uint256" }, { "name": "milestoneId", "type": "uint256", "internalType": "uint256" }, { "name": "contractor", "type": "address", "internalType": "address" }] }], "stateMutability": "view" }, { "type": "function", "name": "milestoneSubmitted", "inputs": [{ "name": "", "type": "address", "internalType": "address" }, { "name": "", "type": "uint256", "internalType": "uint256" }], "outputs": [{ "name": "projectId", "type": "uint256", "internalType": "uint256" }, { "name": "milestoneId", "type": "uint256", "internalType": "uint256" }, { "name": "contractor", "type": "address", "internalType": "address" }], "stateMutability": "view" }, { "type": "function", "name": "projectMilestones", "inputs": [{ "name": "projectId", "type": "uint256", "internalType": "uint256" }, { "name": "", "type": "uint256", "internalType": "uint256" }], "outputs": [{ "name": "milestoneId", "type": "uint256", "internalType": "uint256" }, { "name": "description", "type": "string", "internalType": "string" }, { "name": "completed", "type": "bool", "internalType": "bool" }, { "name": "paymentAmount", "type": "uint256", "internalType": "uint256" }, { "name": "dueDate", "type": "uint256", "internalType": "uint256" }, { "name": "startDate", "type": "uint256", "internalType": "uint256" }, { "name": "milestoneImageCid", "type": "string", "internalType": "string" }], "stateMutability": "view" }, { "type": "function", "name": "projects", "inputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }], "outputs": [{ "name": "projectId", "type": "uint256", "internalType": "uint256" }, { "name": "description", "type": "string", "internalType": "string" }, { "name": "budget", "type": "uint256", "internalType": "uint256" }, { "name": "currentBalance", "type": "uint256", "internalType": "uint256" }, { "name": "contractorAddress", "type": "address", "internalType": "address" }, { "name": "completed", "type": "bool", "internalType": "bool" }, { "name": "startDate", "type": "uint256", "internalType": "uint256" }, { "name": "endDate", "type": "uint256", "internalType": "uint256" }], "stateMutability": "view" }, { "type": "function", "name": "rejectedMilestones", "inputs": [{ "name": "", "type": "address", "internalType": "address" }, { "name": "", "type": "uint256", "internalType": "uint256" }], "outputs": [{ "name": "projectId", "type": "uint256", "internalType": "uint256" }, { "name": "milestoneId", "type": "uint256", "internalType": "uint256" }, { "name": "contractor", "type": "address", "internalType": "address" }], "stateMutability": "view" }, { "type": "function", "name": "submitCompletedMileStone", "inputs": [{ "name": "_projectId", "type": "uint256", "internalType": "uint256" }, { "name": "_milestoneDescription", "type": "string", "internalType": "string" }, { "name": "_mileStoneImagecid", "type": "string", "internalType": "string" }, { "name": "_milestoneId", "type": "uint256", "internalType": "uint256" }], "outputs": [{ "name": "", "type": "bool", "internalType": "bool" }], "stateMutability": "nonpayable" }, { "type": "event", "name": "CreateContractor", "inputs": [{ "name": "", "type": "string", "indexed": false, "internalType": "string" }, { "name": "", "type": "address", "indexed": false, "internalType": "address" }, { "name": "", "type": "uint256", "indexed": false, "internalType": "uint256" }], "anonymous": false }, { "type": "event", "name": "CreateProject", "inputs": [{ "name": "projectDescription", "type": "string", "indexed": false, "internalType": "string" }, { "name": "projectId", "type": "uint256", "indexed": false, "internalType": "uint256" }, { "name": "contractorName", "type": "address", "indexed": false, "internalType": "address" }, { "name": "agencyAddress", "type": "address", "indexed": false, "internalType": "address" }], "anonymous": false }, { "type": "event", "name": "SubmitedMileStone", "inputs": [{ "name": "projectId", "type": "uint256", "indexed": false, "internalType": "uint256" }, { "name": "milestoneDescription", "type": "string", "indexed": false, "internalType": "string" }, { "name": "milestoneId", "type": "uint256", "indexed": false, "internalType": "uint256" }, { "name": "contractoraAddress", "type": "address", "indexed": false, "internalType": "address" }], "anonymous": false }]
+export const WagmiAbi = [
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "CreateContractor",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "projectDescription",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "projectId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "contractorName",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "agencyAddress",
+                "type": "address"
+            }
+        ],
+        "name": "CreateProject",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "projectId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "milestoneDescription",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "milestoneId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "contractoraAddress",
+                "type": "address"
+            }
+        ],
+        "name": "SubmitedMileStone",
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_projectId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_milestoneId",
+                "type": "uint256"
+            }
+        ],
+        "name": "ApproveMilestone",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_milestoneId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_projectId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "contractorAddress",
+                "type": "address"
+            }
+        ],
+        "name": "RejectMilestones",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "agencyContractor",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "contractor",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "companyName",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "registrationNumber",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "taxIdenticationNumber",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "physicalAddress",
+                "type": "string"
+            },
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "internalType": "string",
+                "name": "addressImageCid",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "companyUploadedCid",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "contractorProjects",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "contractors",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "companyName",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "registrationNumber",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "taxIdenticationNumber",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "physicalAddress",
+                "type": "string"
+            },
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "internalType": "string",
+                "name": "addressImageCid",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "companyUploadedCid",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "createAgency",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_companyName",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_registrationNumber",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_taxIdenticationNumber",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "_physicalAddress",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_addressImageCid",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_companyUploadedCid",
+                "type": "string"
+            }
+        ],
+        "name": "createContractor",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_description",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_budget",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_currentBalance",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "_contractorAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_startdate",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_endate",
+                "type": "uint256"
+            },
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "milestoneId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "completed",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "paymentAmount",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "dueDate",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "startDate",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "milestoneImageCid",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct Procurement.Milestone[]",
+                "name": "_milestones",
+                "type": "tuple[]"
+            }
+        ],
+        "name": "createProject",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getAllContractors",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "string",
+                        "name": "companyName",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "registrationNumber",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "taxIdenticationNumber",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "physicalAddress",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "owner",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "addressImageCid",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "companyUploadedCid",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct Procurement.Contractor[]",
+                "name": "",
+                "type": "tuple[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_contractorAddress",
+                "type": "address"
+            }
+        ],
+        "name": "getContractor",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "string",
+                        "name": "companyName",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "registrationNumber",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "taxIdenticationNumber",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "physicalAddress",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "owner",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "addressImageCid",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "companyUploadedCid",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct Procurement.Contractor",
+                "name": "",
+                "type": "tuple"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_address",
+                "type": "address"
+            }
+        ],
+        "name": "getContractorsProject",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "projectId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "budget",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "currentBalance",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "contractorAddress",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "completed",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "startDate",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "endDate",
+                        "type": "uint256"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "milestoneId",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "description",
+                                "type": "string"
+                            },
+                            {
+                                "internalType": "bool",
+                                "name": "completed",
+                                "type": "bool"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "paymentAmount",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "dueDate",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "startDate",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "milestoneImageCid",
+                                "type": "string"
+                            }
+                        ],
+                        "internalType": "struct Procurement.Milestone[]",
+                        "name": "mileStone",
+                        "type": "tuple[]"
+                    }
+                ],
+                "internalType": "struct Procurement.Project[]",
+                "name": "",
+                "type": "tuple[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_projectId",
+                "type": "uint256"
+            }
+        ],
+        "name": "getProject",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "projectId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "budget",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "currentBalance",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "contractorAddress",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "completed",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "startDate",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "endDate",
+                        "type": "uint256"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "milestoneId",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "description",
+                                "type": "string"
+                            },
+                            {
+                                "internalType": "bool",
+                                "name": "completed",
+                                "type": "bool"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "paymentAmount",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "dueDate",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "startDate",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "milestoneImageCid",
+                                "type": "string"
+                            }
+                        ],
+                        "internalType": "struct Procurement.Milestone[]",
+                        "name": "mileStone",
+                        "type": "tuple[]"
+                    }
+                ],
+                "internalType": "struct Procurement.Project",
+                "name": "",
+                "type": "tuple"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_projectId",
+                "type": "uint256"
+            }
+        ],
+        "name": "getProjectMillstones",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "milestoneId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "completed",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "paymentAmount",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "dueDate",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "startDate",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "milestoneImageCid",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct Procurement.Milestone[]",
+                "name": "",
+                "type": "tuple[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_contractorAddress",
+                "type": "address"
+            }
+        ],
+        "name": "getRejectedProject",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "projectId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "milestoneId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "contractor",
+                        "type": "address"
+                    }
+                ],
+                "internalType": "struct Procurement.RejectedMileStone[]",
+                "name": "",
+                "type": "tuple[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getsubmittedMilestone",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "milestoneId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "completed",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "paymentAmount",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "dueDate",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "startDate",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "milestoneImageCid",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct Procurement.Milestone[]",
+                "name": "",
+                "type": "tuple[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "milestoneSubmitted",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "projectId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "milestoneId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "contractor",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "projectId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "projectMilestones",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "milestoneId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "description",
+                "type": "string"
+            },
+            {
+                "internalType": "bool",
+                "name": "completed",
+                "type": "bool"
+            },
+            {
+                "internalType": "uint256",
+                "name": "paymentAmount",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "dueDate",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "startDate",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "milestoneImageCid",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "projects",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "projectId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "description",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "budget",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "currentBalance",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "contractorAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "bool",
+                "name": "completed",
+                "type": "bool"
+            },
+            {
+                "internalType": "uint256",
+                "name": "startDate",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "endDate",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "projectId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "projectsubmited",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "rejectedMilestones",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "projectId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "milestoneId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "contractor",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_projectId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "_milestoneDescription",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_mileStoneImagecid",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_milestoneId",
+                "type": "uint256"
+            }
+        ],
+        "name": "submitCompletedMileStone",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]
