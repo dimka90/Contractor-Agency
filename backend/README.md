@@ -119,3 +119,22 @@ Waiting for blockscout to detect contract deployment...
 Start verifying contract `0x559E854725884F633E680d62A159C94e79BEF657` deployed on 4202
 
 Contract [src/Contractor.sol:Procurement] "0x559E854725884F633E680d62A159C94e79BEF657" is already verified. Skipping verification.
+
+update v4
+
+erc20 - 0x2357e78407e38d1ae29ab2a2895f541d2e774666
+
+contract address0xa1f967b639832e32bf462e0084a8dbc0e178005d
+URL: https://sepolia-blockscout.lisk.com/address/0xa1f967b639832e32bf462e0084a8dbc0e178005d
+
+update v5
+contract address - 0x1aa96eda1b69ad33dd24908e28981a36f4cbd761
+
+update v6
+
+erc20 Address - URL: https://sepolia-blockscout.lisk.com/address/0xdeea89893a75bf2447e2e070f11920550566cba8
+
+contract Address - 0x54e766DB13D1EEe7a3a7bb70808df656Be051577
+
+update v7
+contract Address - 0xfd803493a89f96f72f48b25aec4d557bbf95e41d

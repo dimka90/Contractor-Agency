@@ -93,10 +93,11 @@ const Navbar = () => {
   return (
     <nav className="bg-white top-0 z-50 w-full md:w-full fixed">
       <div className="container mx-auto px-4 py-5 flex justify-between items-center">
-        <Link to="/">
-          <div className="flex items-center">
+        <Link to="/" className='ml-28 flex flex-col items-center'>
+          <div className="flex items-center w-7" >
             <img src={Logo} alt="Logo" className="" />
           </div>
+          <h2 className='text-green-600 font-bold text-xl'>TswiFt</h2>
         </Link>
         <ul className="hidden md:flex space-x-8 text-base text-[#18191F]">
           <Link to="/">

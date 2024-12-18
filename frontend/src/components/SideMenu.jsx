@@ -22,7 +22,7 @@ function SideMenu() {
             <li><GrProjects className="inline text-xl text-white mr-3"/> <Link to="/review">Projects Review</Link></li>
 
             {/* <li><GrProjects className="inline text-xl text-white mr-3"/> <Link to="/ReviewMilestone">Review</Link></li> */}
-            <li><BiSolidMessageSquareDetail className="inline text-xl text-white mr-3"/>Notifications</li>
+            {/* <li><BiSolidMessageSquareDetail className="inline text-xl text-white mr-3"/>Notifications</li> */}
           </ul>
         </div>
       </div>

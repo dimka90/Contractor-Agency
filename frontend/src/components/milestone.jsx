@@ -16,6 +16,29 @@ function MilestoneForm() {
     
       );
 
+      const uploadImageToIPFS = async (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        console.log(file)
+    
+        try {
+          const response = await fetch('https://api.pinata.cloud/pinning/pinFileToIPFS', {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${JWT}`,
+            },
+            body: formData,
+          });
+    
+          const data = await response.json();
+          return data.IpfsHash;
+        } catch (error) {
+          console.error('Error uploading image to IPFS:', error);
+        }
+      };
+
+    
+      
       const { isLoading: isConfirming, isSuccess: isConfirmed } =useWaitForTransactionReceipt({
         hash: transactionData?.hash,
       });
@@ -24,7 +47,7 @@ function MilestoneForm() {
   const location = useLocation();
   const { projectId, milestone } = location.state || {}; // Retrieve state
   console.log("Project ID:", projectId);
-  console.log("Milestone:", milestone);
+  // console.log("Milestone:", milestone);
 
   const [description, setDescription] = useState("");
   const [images, setImages] = useState([]); // Uploaded image info
@@ -54,35 +77,54 @@ function MilestoneForm() {
           data.append("file", file);
           data.append("name", file.name);
 
-          const config = {
-            method: "post",
-            url: "https://uploads.pinata.cloud/v3/files",
-            headers: {
-              Authorization: `Bearer ${JWT}`,
-            },
-            data,
-          };
+          // const imageCID = await uploadImageToIPFS(file);
+          // console.log(imageCID)
+          // const imageURL = `https://gateway.pinata.cloud/ipfs/${imageCID}`;
+          // console.log("Contractor URL:", imageURL);
+          // const config = {
+          //   method: "post",
+          //   url: "https://uploads.pinata.cloud/v3/files",
+          //   headers: {
+          //     Authorization: `Bearer ${JWT}`,
+          //   },
+          //   data,
+          // };
 
-          const response = await axios.request(config);
+          // const metadata = {
+          //   name: file.name,
+          //   description: description,
+          //   image: imageURL,
+          // };
+
+          // const metadataCID = await uploadMetadataToIPFS(metadata);
+          // console.log(metadataCID)
+
+          // const metadataURL = `https://gateway.pinata.cloud/ipfs/${metadataCID}`;
+          // console.log("Metadata URL:", metadataURL);
+
+    
+          // const response = await axios.request(config);
+          const response = await uploadImageToIPFS(file);
           console.log("Response", response)
-          console.log("Uploaded File Data:", response.data);
+          setImages(response); 
+          // console.log("Uploaded File Data:", response.data);
 
-          console.log("I have a cid", response.data.cid)
-          console.log("I am the second Id", response.data.data.cid)
+          // console.log("I have a cid", response.data.cid)
+          // console.log("I am the second Id", response.data.data.cid)
 
-          if(response){
-            setImageCid(response.data.data.cid)
-          }
+          // if(response){
+          //   setImageCid(response.data.data.cid)
+          // }
 
-          return {
-            fileName: file.name,
-            pinataId: response.data.data.id,
-            cid: response.data.data.cid,
-          };
+          // return {
+          //   fileName: file.name,
+          //   pinataId: response.data.data.id,
+          //   cid: response.data.data.cid,
+          // };
         })
       );
 
-      setImages(uploadedFiles); // Set uploaded files to state
+      // Set uploaded files to state
       console.log("All Uploaded Files:", uploadedFiles);
     } catch (error) {
       console.error("Error uploading files:", error);
@@ -92,51 +134,47 @@ function MilestoneForm() {
   };
 
   // Handle Submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Project ID:", projectId);
-    console.log("Current Milestone:", milestone);
-    console.log("Description:", description);
-    console.log("Uploaded Images:", images);
+    // console.log("Project ID:", projectId);
+    // console.log("Current Milestone:", milestone);
+    // console.log("Description:", description);
+    // console.log("Uploaded Images:", images);
+    // const data = new FormData();
+    // data.append("file", file);
+    // data.append("name", file.name);
+
+    const imageCID = images;
+
+    console.log(imageCID)
 
     writeContract(
         {...wagmiContractConfig,
-         functionName: 'submitCompletedMileStone',
+         functionName: 'SubmitProject',
        args: [
         projectId,
         description,
-        ImgCid,
-        milestone
+        imageCID,
        ],
      });
-
-  //   let progress = 0;
-  //   const interval = setInterval(() => {
-  //     progress += 10;
-  //     setLoadingProgress(progress);
-  //     if (progress >= 100) {
-  //       clearInterval(interval);
-  //       alert("Milestone submitted successfully!");
-  //       resetForm();
-  //     }
-  //   }, 300);
+     const resetForm = () => {
+      setDescription("");
+      setImages([]);
+      setPreviewImages([]);
+      setLoadingProgress(0);
+    };
+resetForm();  
   };
 
-  const resetForm = () => {
-    setDescription("");
-    setImages([]);
-    setPreviewImages([]);
-    setLoadingProgress(0);
-  };
-
+  
   return (
     <div className="flex justify-center min-h-screen bg-gray-50">
       <form
         onSubmit={handleSubmit}
         className="bg-white rounded-lg shadow-lg p-6 w-[55%] mt-20 h-[40em]">
         <h2 className="text-2xl font-semibold mb-4 text-center">
-          Submit Milestone for Review
+          Submit Proeject for Review
         </h2>
 
         {/* Description Input */}
