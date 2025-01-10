@@ -25,15 +25,15 @@ function Meeting() {
               <div className="text-sm">
                 <p className="font-bold text-[#475467]">06/08/2024</p>
                 <p className="text-center font-bold text-[#475467]">9:00am</p>
-                <button className="text-[#01644C] text-[14px]">Reschedule</button>
+                <button className="text-slate-900 text-[14px]">Reschedule</button>
               </div>
             </div>
           </div>
           <div className="flex justify-between">
-            <button className="bg-gradient-to-r from-[#00CA9A99] to-[#00644C99] rounded-3xl py-2 px-5 text-[14px] text-white">
+            <button className="bg-gradient-to-r from-slate-600 to-slate-900 rounded-3xl py-2 px-5 text-[14px] text-white">
               Schedule a meeting
             </button>
-            <button className="text-[#01644C] text-[14px]">See all</button>
+            <button className="text-slate-900 text-[14px]">See all</button>
           </div>
         </div>
       </div>

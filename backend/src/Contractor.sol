@@ -2,14 +2,20 @@
 
 pragma solidity ^0.8.26;
 import "forge-std/console.sol";
+import "../src/interfaces/IERC20.sol";
 contract Procurement{
  // Define roles: Contractors, Whistleblowers, and Government Agency
+    
+    address owner;
+    address tokenAddress;
+
+    
 enum UserRole { None, Contractor, Whistleblower, Agency }
 enum ProjectStatus { NotStarted, InProgress, Completed, Canceled }
 
 event CreateContractor(string,address,uint);
 event CreateProject(string projectDescription,uint projectId,address contractorName,address agencyAddress);
-
+event SubmitedProject(uint projectId, string milestoneDescription, string Imgcid, address contractoraAddress);
 struct Contractor{
 
     string companyName;
@@ -36,64 +42,82 @@ struct Milestone{
     uint paymentAmount;
     uint dueDate;
     uint startDate;
+    string milestoneImageCid;
 }
 
-struct Project {
+struct RejectedMileStone{
+    uint projectId;
+    uint milestoneId;
+    address contractor;
+}
+struct MileStoneSubMitted{
+    uint projectId;
+    uint milestoneId;
+    address contractor;
+}
+
+uint256 projectId = 1;
+
+struct Project{
     uint256 projectId;
     string description;
     uint256 budget;
-    uint256 currentBalance;
     address contractorAddress;
     bool completed;
     uint startDate;
     uint endDate;
-    Milestone[] mileStone;
+    string imageCid;
 }
-uint256 projectId = 1;
-
 // Data structures for data storage
 mapping(uint256 => Project) public projects; 
+mapping(uint256 => Project) public projectsupdate; 
 mapping(address => uint256[]) public contractorProjects;
-mapping(uint256 projectId=> Milestone[]) public projectMilestones;
+// mapping(uint256 projectId=> Milestone[]) public projectMilestones;
 mapping(uint256 => Contractor) public contractor;
+mapping(address => RejectedMileStone[] ) public rejectedMilestones;
+mapping(address => MileStoneSubMitted[] ) public milestoneSubmitted;
+mapping(address => address ) public agencyContractor;
+mapping(address contractor => uint[])public projectsubmited;
+mapping(address agency => address contractor) public agency_Contractor;
+
 Contractor[] public contractors;
 uint milestoneId;
+
+
+constructor (address _tokenAddress) {
+        owner = msg.sender;
+        tokenAddress = _tokenAddress;
+    }
 
 function createProject(
     string memory _description,
     uint256 _budget,
-    uint256 _currentBalance,
     address _contractorAddress,
     uint _startdate,
-    uint _endate,
-    Milestone[] calldata _milestones
+    uint _endate
 ) external {
-require(_milestones.length > 0, "Milestone is require");
-
+    
+    uint256 allowance = IERC20(tokenAddress).allowance(msg.sender, address(this));
+        require(_budget <= allowance , "No allowance to spend funds at the moment");
+        IERC20(tokenAddress).transferFrom(msg.sender, address(this), _budget);
+// Create a new project for a Contractor
 Project storage newProject = projects[projectId];
 newProject.projectId = projectId;
 newProject.description = _description;
 newProject.budget = _budget;
-newProject.currentBalance = _currentBalance;
 newProject.contractorAddress = _contractorAddress;
 newProject.completed = false;
 newProject.startDate = _startdate;
 newProject.endDate = _endate;
+newProject.imageCid = " ";
 
-for (uint i; i< _milestones.length;i++){
-newProject.mileStone.push(
-    Milestone({
-milestoneId: milestoneId,
-description:_milestones[i].description,
-completed: false,
-paymentAmount:_milestones[i].paymentAmount,
-dueDate: _milestones[i].dueDate,
-startDate: _milestones[i].startDate
-    }));
-}
-// Append to list of contractors project
-
+//mapp contractors address to the project assigned
 contractorProjects[_contractorAddress].push(projectId);
+
+// mapp contractor to agency
+
+agency_Contractor[msg.sender] = _contractorAddress;
+
 
 emit CreateProject(
 _description,
@@ -103,6 +127,42 @@ msg.sender
 );
 projectId++;
 
+}
+
+function SubmitProject(
+uint _projectId, 
+string memory projectDescription,
+string memory imgCid)
+external 
+{
+
+// Get the Project and update the value
+Project  storage project = projects[_projectId];
+
+project.description = projectDescription;
+project.imageCid = imgCid;
+
+// create a project to
+
+
+projectsubmited[msg.sender].push(_projectId);
+
+emit SubmitedProject(projectId, projectDescription, imgCid,msg.sender);
+
+}
+ 
+function getSubmittedProject(address contractOwner) view
+external returns(Project[] memory){
+uint[] memory number= projectsubmited[agency_Contractor[contractOwner]];
+uint projectlen = number.length;
+Project[] memory project = new Project[](projectlen);
+
+for(uint i; i<projectlen; i++)
+{
+    project[i] = projects[number[i]];
+}
+
+return project;
 }
 
 // contractors information
@@ -134,16 +194,19 @@ emit CreateContractor(_companyName, msg.sender, _registrationNumber);
 
 }
 
+function RejectMilestones(uint _milestoneId, uint _projectId, address contractorAddress) external returns(bool)
+    {
+        RejectedMileStone[] storage milstonesRejected = rejectedMilestones[contractorAddress];
+        milstonesRejected.push(
+            RejectedMileStone({
+                projectId: _projectId,
+                milestoneId: _milestoneId,
+                contractor: contractorAddress
+                }));
 
-function submitCompletedProject(
-    uint _projectId,
-    string memory _projectDescription,
-    string memory  _projectImagecid  
-) external{
+                return true;
 
-
-
-}
+ }
 // Getters functions
 
 function getAllContractors() external view returns(Contractor[] memory) 
@@ -194,21 +257,25 @@ return _projects;
 
 }
 
-function getProjectMillstones(uint _projectId)  external view returns(Milestone[] memory) { 
+// function getProjectMillstones(uint _projectId)  external view returns(Milestone[] memory) { 
 
-    return projectMilestones[_projectId];
+//     return projectMilestones[_projectId];
 
-}
+// }
 function getProject(uint _projectId) external view returns(Project memory){
 return projects[_projectId];
 
 }
+ 
 
-
+function getRejectedProject(address _contractorAddress) view external  returns(RejectedMileStone[] memory)
+{
+    return rejectedMilestones[_contractorAddress];
+}
 // Government agency 
 
 function createAgency () external{
 
 }
+
 }
-//source->syn

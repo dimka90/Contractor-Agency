@@ -14,7 +14,7 @@ contract ProcurementTest is Test{
     address  contractorAddress;
 function setUp() external {
 
-procurement = new Procurement();
+procurement = new Procurement(vm.addr(1));
 contractorAddress = vm.addr(1);
  string memory name = "Julis";
     uint reg = 1234567;
@@ -47,7 +47,8 @@ function testcreateProject() external {
             completed: false,
             paymentAmount: 1000,
             startDate: block.timestamp,
-            dueDate: block.timestamp + 1 weeks
+            dueDate: block.timestamp + 1 weeks,
+             milestoneImageCid :""
         }));
 
         milestones.push(Procurement.Milestone({
@@ -56,22 +57,16 @@ function testcreateProject() external {
             completed: false,
             paymentAmount: 2000,
             startDate: block.timestamp + 1 weeks,
-            dueDate: block.timestamp + 2 weeks
+            dueDate: block.timestamp + 2 weeks,
+            milestoneImageCid :""
         }));
 
-        procurement.createProject(description, budget, currentBalance, contractorAddress,startdate, endate, milestones);
+        procurement.createProject(description, budget, contractorAddress,startdate, endate);
 
 
     Procurement.Project memory  project = procurement.getProject(1);
 
 assertEq(project.description,project.description, "Expected 10 classrooms");
-Procurement.Milestone[] memory projectMilestones = project.mileStone;
-
-for(uint i; i < projectMilestones.length; i ++){
-    console.log("",projectMilestones[i].description);
-    console.log("",projectMilestones[i].startDate);
-}
-
     
 }
 
@@ -91,7 +86,8 @@ string memory description  ="Construction of 10 class rooms";
             completed: false,
             paymentAmount: 1000,
             startDate: block.timestamp,
-            dueDate: block.timestamp + 1 weeks
+            dueDate: block.timestamp + 1 weeks,
+            milestoneImageCid :""
         }));
 
         milestones.push(Procurement.Milestone({
@@ -100,10 +96,11 @@ string memory description  ="Construction of 10 class rooms";
             completed: false,
             paymentAmount: 2000,
             startDate: block.timestamp + 1 weeks,
-            dueDate: block.timestamp + 2 weeks
+            dueDate: block.timestamp + 2 weeks,
+            milestoneImageCid :""
         }));
 
-        procurement.createProject(description, budget, currentBalance,vm.addr(1),startdate, endate, milestones);
+        // procurement.createProject(description, budget, currentBalance,vm.addr(1),startdate, endate );
 
         Procurement.Project[] memory contractorproject = procurement.getContractorsProject(vm.addr(1));
         console.log(" Length {}", contractorproject.length);
@@ -117,5 +114,85 @@ string memory description  ="Construction of 10 class rooms";
         vm.stopPrank();
 
 }
+
+
+function testgetSubmittedMilstone() external {
+    vm.startPrank(vm.addr(1));
+
+string memory description  ="Construction of 10 class rooms";
+  uint budget = 10000;
+  uint currentBalance = budget;
+ 
+ uint startdate = block.timestamp;
+    uint endate = block.timestamp + 4 weeks;
+
+        milestones.push(Procurement.Milestone({
+            milestoneId: 1,
+            description: "Initial Phase",
+            completed: false,
+            paymentAmount: 1000,
+            startDate: block.timestamp,
+            dueDate: block.timestamp + 1 weeks,
+            milestoneImageCid :""
+        }));
+
+        milestones.push(Procurement.Milestone({
+            milestoneId: 2,
+            description: "Development Phase",
+            completed: false,
+            paymentAmount: 2000,
+            startDate: block.timestamp + 1 weeks,
+            dueDate: block.timestamp + 2 weeks,
+            milestoneImageCid :""
+        }));
+
+        procurement.createProject(description, budget,vm.addr(1),startdate, endate);
+
+    // bool result = procurement.submitCompletedMileStone(1, "Completed the initial phase of development", "ipfs/image.png", 0);
+    // console.log(result);
+    // assertEq(result,true, "Expected result to be true");
+    vm.stopPrank();
+
+}
+
+function testApproveMilestone() external {
+    vm.startPrank(vm.addr(1));
+
+string memory description  ="Construction of 10 class rooms";
+  uint budget = 10000;
+  uint currentBalance = budget;
+ 
+ uint startdate = block.timestamp;
+    uint endate = block.timestamp + 4 weeks;
+
+        milestones.push(Procurement.Milestone({
+            milestoneId: 1,
+            description: "Initial Phase",
+            completed: false,
+            paymentAmount: 1000,
+            startDate: block.timestamp,
+            dueDate: block.timestamp + 1 weeks,
+            milestoneImageCid :""
+        }));
+
+        milestones.push(Procurement.Milestone({
+            milestoneId: 2,
+            description: "Development Phase",
+            completed: false,
+            paymentAmount: 2000,
+            startDate: block.timestamp + 1 weeks,
+            dueDate: block.timestamp + 2 weeks,
+            milestoneImageCid :""
+        }));
+
+        procurement.createProject(description, budget,vm.addr(1),startdate, endate);
+
+    // bool result = procurement.ApproveMilestone(1, 1);
+    // console.log(result);
+    // assertEq(result,true, "Expected result to be true");
+    vm.stopPrank();
+
+}
+
 }
 

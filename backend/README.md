@@ -64,3 +64,77 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+
+forge verify-contract 0xabDe84F6FfC9f44C978bD9dA76319316EeeA01BB src/Contractor.so
+l:Procurement --chain 4202 --watch --verifier blockscout --verifier-url https://sepolia-blockscout.lisk.com/api
+Start verifying contract `0xabDe84F6FfC9f44C978bD9dA76319316EeeA01BB` deployed on 4202
+
+Submitting verification for [src/Contractor.sol:Procurement] 0xabDe84F6FfC9f44C978bD9dA76319316EeeA01BB.
+Submitted contract for verification:
+        Response: `OK`
+        GUID: `abde84f6ffc9f44c978bd9da76319316eeea01bb675ab7bc`
+        URL: https://sepolia-blockscout.lisk.com/address/0xabde84f6ffc9f44c978bd9da76319316eeea01bb
+Contract verification status:
+Response: `OK`
+Details: `Pending in queue`
+Contract verification status:
+Response: `OK`
+Details: `Pass - Verified`
+Contract successfully verified
+
+update(v2)
+
+Submitting verification for [src/Contractor.sol:Procurement] 0xc48cb09fdddf80E04476C1ECC393DA5706Da8501.
+Submitted contract for verification:
+        Response: `OK`
+        GUID: `c48cb09fdddf80e04476c1ecc393da5706da8501675fae49`
+        URL: https://sepolia-blockscout.lisk.com/address/0xc48cb09fdddf80e04476c1ecc393da5706da8501
+
+
+update(v3)
+
+
+ubmitting verification for [src/Contractor.sol:Procurement] 0xF5D1863c6b954C407090B48dbaf60f24f9a8B213.
+Submitted contract for verification:
+        Response: `OK`
+        GUID: `f5d1863c6b954c407090b48dbaf60f24f9a8b21367603dbe`
+        URL: https://sepolia-blockscout.lisk.com/address/0xf5d1863c6b954c407090b48dbaf60f24f9a8b213
+Contract verification status:
+Response: `OK`
+Details: `Pending in queue`
+Contract verification status:
+Response: `OK`
+Details: `Pass - Verified`
+Contract successfully verified
+
+update 3
+ forge create --rpc-url https://rpc.sepolia-api.lisk.com --etherscan-api-key GTT7DH386XJ2JDK8RAU64UPYBT1D4GGEQW --verify --verifier blockscout --verifier-url https://sepolia-blockscout.lisk.com/api --private-key 3c52739c9a662defb57de6b8aa2d742a0e42f95ef4c7a1064428e39f7fc61909 src/Contractor.sol:Procurement
+[⠢] Compiling...
+No files changed, compilation skipped
+Deployer: 0x1864cdF30E6B98240e4b3eF88bfF5cD5d5BdEF40
+Deployed to: 0x559E854725884F633E680d62A159C94e79BEF657
+Transaction hash: 0x6b54ff017ad0bfe5a5b720002e75cdab4af5a8a7a4e692ccffd28d640e0c78c2
+Starting contract verification...
+Waiting for blockscout to detect contract deployment...
+Start verifying contract `0x559E854725884F633E680d62A159C94e79BEF657` deployed on 4202
+
+Contract [src/Contractor.sol:Procurement] "0x559E854725884F633E680d62A159C94e79BEF657" is already verified. Skipping verification.
+
+update v4
+
+erc20 - 0x2357e78407e38d1ae29ab2a2895f541d2e774666
+
+contract address0xa1f967b639832e32bf462e0084a8dbc0e178005d
+URL: https://sepolia-blockscout.lisk.com/address/0xa1f967b639832e32bf462e0084a8dbc0e178005d
+
+update v5
+contract address - 0x1aa96eda1b69ad33dd24908e28981a36f4cbd761
+
+update v6
+
+erc20 Address - URL: https://sepolia-blockscout.lisk.com/address/0xdeea89893a75bf2447e2e070f11920550566cba8
+
+contract Address - 0x54e766DB13D1EEe7a3a7bb70808df656Be051577
+
+update v7
+contract Address - 0xfd803493a89f96f72f48b25aec4d557bbf95e41d
